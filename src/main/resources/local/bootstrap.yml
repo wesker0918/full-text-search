@@ -1,0 +1,104 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: ecology-fts
+  cloud:
+    nacos:
+      config:
+        enabled: false
+      discovery:
+        enabled: true
+        service: ecology-fts
+        server-addr: 172.30.1.211:30562
+        namespace:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172.30.1.216:3306/eco_multiplex_adaptersite?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
+    username: gansu_dev
+    password: 1qazWSX_gansu
+    hikari:
+      connection-timeout: 30000
+      minimum-idle: 5
+      maximum-pool-size: 20
+      auto-commit: true
+      idle-timeout: 600000
+      pool-name: DSPool
+      max-lifetime: 1800000
+      connection-test-query: SELECT 1
+  liquibase:
+    enabled: false
+    change-log: classpath:db/changelog/changelog.yml
+  jackson:
+    default-property-inclusion: non_null
+  elasticsearch:
+    rest:
+      uris: 172.30.1.118:9200
+mybatis-plus:
+  mapper-locations: classpath:mapping/*
+  type-aliases-package: com.yunli.ecology.search.schema.entity
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+# feign超时设置
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 10000
+        readTimeout: 15000
+# 监控设置
+management:
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: prometheus,health,info
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    org.springframework.data.elasticsearch.core: DEBUG
+xxl:
+  job:
+    accessToken:
+    admin:
+      adress: http://172.30.1.211:31632/xxl-job-admin/
+    executor:
+      appname: ecology-fts
+      ip:
+      port: 9998
+      logpath: job-logs/xxl-job/job-executor
+      logretentiondays: -1
+ecology-fts:
+  # 是否显示swagger-ui.html页面,生产环境配置为false
+  show-swagger-ui: true
+  ver: 0.0.1-SNAPSHOT
+  midData:
+    name: ecology-multiplex-adaptersite-dev
+    url: http://172.30.1.211:31154
+  scene:
+    ROBOT:
+      - PP
+      - ZQ
+      - RR
+      - SS
+      - WCP
+    #      - CS
+    #      - RC
+    LAYER:
+      - PP
+      - ZQ
+      - RR
+      - SS
+      - WCP

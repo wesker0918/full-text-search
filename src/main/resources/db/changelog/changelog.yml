@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet: # 对应一个 ChangeSet 对象
+      id: fts_0.0.1-SNAPSHOT # ChangeSet 编号
+      author: wangy # 作者
+      comments: init # 备注
+      changes:
+        - sqlFile:
+            encoding: utf8
+            path: classpath:db/sqlfile/fts_0.0.1-SNAPSHOT.sql

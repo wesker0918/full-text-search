@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: ecology-fts
+  cloud:
+    nacos:
+      config:
+        prefix: ${spring.application.name}
+        server-addr: ${ENV_NACOS_SERVER}
+        file-extension: yml
+        namespace: ${ENV_CFG_NAMESPACE}
+      discovery:
+        service: ${ENV_DIS_SERVICE}
+        server-addr: ${ENV_NACOS_SERVER}
+        namespace: ${ENV_DIS_NAMESPACE}

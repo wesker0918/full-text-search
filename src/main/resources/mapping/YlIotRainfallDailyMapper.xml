@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yunli.ecology.search.repository.mybatis.YlIotRainfallDailyMapper">
+    <resultMap id="BaseResultMap" type="com.yunli.ecology.search.schema.entity.YlIotRainfallDaily">
+        <id column="station_code" jdbcType="VARCHAR" property="stationCode"/>
+        <id column="monitor_date" jdbcType="DATE" property="monitorDate"/>
+        <result column="station_name" jdbcType="VARCHAR" property="stationName"/>
+        <result column="prov_region_code" jdbcType="VARCHAR" property="provRegionCode"/>
+        <result column="prov_region_name" jdbcType="VARCHAR" property="provRegionName"/>
+        <result column="city_region_code" jdbcType="VARCHAR" property="cityRegionCode"/>
+        <result column="city_region_name" jdbcType="VARCHAR" property="cityRegionName"/>
+        <result column="district_region_code" jdbcType="VARCHAR" property="districtRegionCode"/>
+        <result column="district_region_name" jdbcType="VARCHAR" property="districtRegionName"/>
+        <result column="lng" jdbcType="DECIMAL" property="lng"/>
+        <result column="lat" jdbcType="DECIMAL" property="lat"/>
+        <result column="station_loc" jdbcType="VARCHAR" property="stationLoc"/>
+        <result column="watershed_code" jdbcType="VARCHAR" property="watershedCode"/>
+        <result column="watershed_name" jdbcType="VARCHAR" property="watershedName"/>
+        <result column="riversys_code" jdbcType="VARCHAR" property="riversysCode"/>
+        <result column="riversys_name" jdbcType="VARCHAR" property="riversysName"/>
+        <result column="river_code" jdbcType="VARCHAR" property="riverCode"/>
+        <result column="river_name" jdbcType="VARCHAR" property="riverName"/>
+        <result column="monitor_year" jdbcType="INTEGER" property="monitorYear"/>
+        <result column="monitor_month" jdbcType="TINYINT" property="monitorMonth"/>
+        <result column="monitor_day" jdbcType="TINYINT" property="monitorDay"/>
+        <result column="daily_acculate" jdbcType="DECIMAL" property="dailyAcculate"/>
+        <result column="time_period" jdbcType="DECIMAL" property="timePeriod"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        station_code, monitor_date, station_name, prov_region_code, prov_region_name, city_region_code,
+    city_region_name, district_region_code, district_region_name, lng, lat, station_loc, 
+    watershed_code, watershed_name, riversys_code, riversys_name, river_code, river_name, 
+    monitor_year, monitor_month, monitor_day, daily_acculate, time_period, remark, create_time, 
+    update_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="com.yunli.ecology.search.schema.entity.YlIotRainfallDailyKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from yl_iot_rainfall_daily
+        where station_code = #{stationCode,jdbcType=VARCHAR}
+        and monitor_date = #{monitorDate,jdbcType=DATE}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="com.yunli.ecology.search.schema.entity.YlIotRainfallDailyKey">
+        delete
+        from yl_iot_rainfall_daily
+        where station_code = #{stationCode,jdbcType=VARCHAR}
+          and monitor_date = #{monitorDate,jdbcType=DATE}
+    </delete>
+    <insert id="insert" parameterType="com.yunli.ecology.search.schema.entity.YlIotRainfallDaily">
+        insert into yl_iot_rainfall_daily (station_code, monitor_date, station_name,
+                                           prov_region_code, prov_region_name, city_region_code,
+                                           city_region_name, district_region_code, district_region_name,
+                                           lng, lat, station_loc,
+                                           watershed_code, watershed_name, riversys_code,
+                                           riversys_name, river_code, river_name,
+                                           monitor_year, monitor_month, monitor_day,
+                                           daily_acculate, time_period, remark,
+                                           create_time, update_time)
+        values (#{stationCode,jdbcType=VARCHAR}, #{monitorDate,jdbcType=DATE}, #{stationName,jdbcType=VARCHAR},
+                #{provRegionCode,jdbcType=VARCHAR}, #{provRegionName,jdbcType=VARCHAR}, #{cityRegionCode,jdbcType=VARCHAR},
+                #{cityRegionName,jdbcType=VARCHAR}, #{districtRegionCode,jdbcType=VARCHAR}, #{districtRegionName,jdbcType=VARCHAR},
+                #{lng,jdbcType=DECIMAL}, #{lat,jdbcType=DECIMAL}, #{stationLoc,jdbcType=VARCHAR},
+                #{watershedCode,jdbcType=VARCHAR}, #{watershedName,jdbcType=VARCHAR}, #{riversysCode,jdbcType=VARCHAR},
+                #{riversysName,jdbcType=VARCHAR}, #{riverCode,jdbcType=VARCHAR}, #{riverName,jdbcType=VARCHAR},
+                #{monitorYear,jdbcType=INTEGER}, #{monitorMonth,jdbcType=TINYINT}, #{monitorDay,jdbcType=TINYINT},
+                #{dailyAcculate,jdbcType=DECIMAL}, #{timePeriod,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR},
+                #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.yunli.ecology.search.schema.entity.YlIotRainfallDaily">
+        insert into yl_iot_rainfall_daily
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="stationCode != null">
+                station_code,
+            </if>
+            <if test="monitorDate != null">
+                monitor_date,
+            </if>
+            <if test="stationName != null">
+                station_name,
+            </if>
+            <if test="provRegionCode != null">
+                prov_region_code,
+            </if>
+            <if test="provRegionName != null">
+                prov_region_name,
+            </if>
+            <if test="cityRegionCode != null">
+                city_region_code,
+            </if>
+            <if test="cityRegionName != null">
+                city_region_name,
+            </if>
+            <if test="districtRegionCode != null">
+                district_region_code,
+            </if>
+            <if test="districtRegionName != null">
+                district_region_name,
+            </if>
+            <if test="lng != null">
+                lng,
+            </if>
+            <if test="lat != null">
+                lat,
+            </if>
+            <if test="stationLoc != null">
+                station_loc,
+            </if>
+            <if test="watershedCode != null">
+                watershed_code,
+            </if>
+            <if test="watershedName != null">
+                watershed_name,
+            </if>
+            <if test="riversysCode != null">
+                riversys_code,
+            </if>
+            <if test="riversysName != null">
+                riversys_name,
+            </if>
+            <if test="riverCode != null">
+                river_code,
+            </if>
+            <if test="riverName != null">
+                river_name,
+            </if>
+            <if test="monitorYear != null">
+                monitor_year,
+            </if>
+            <if test="monitorMonth != null">
+                monitor_month,
+            </if>
+            <if test="monitorDay != null">
+                monitor_day,
+            </if>
+            <if test="dailyAcculate != null">
+                daily_acculate,
+            </if>
+            <if test="timePeriod != null">
+                time_period,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="stationCode != null">
+                #{stationCode,jdbcType=VARCHAR},
+            </if>
+            <if test="monitorDate != null">
+                #{monitorDate,jdbcType=DATE},
+            </if>
+            <if test="stationName != null">
+                #{stationName,jdbcType=VARCHAR},
+            </if>
+            <if test="provRegionCode != null">
+                #{provRegionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="provRegionName != null">
+                #{provRegionName,jdbcType=VARCHAR},
+            </if>
+            <if test="cityRegionCode != null">
+                #{cityRegionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cityRegionName != null">
+                #{cityRegionName,jdbcType=VARCHAR},
+            </if>
+            <if test="districtRegionCode != null">
+                #{districtRegionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="districtRegionName != null">
+                #{districtRegionName,jdbcType=VARCHAR},
+            </if>
+            <if test="lng != null">
+                #{lng,jdbcType=DECIMAL},
+            </if>
+            <if test="lat != null">
+                #{lat,jdbcType=DECIMAL},
+            </if>
+            <if test="stationLoc != null">
+                #{stationLoc,jdbcType=VARCHAR},
+            </if>
+            <if test="watershedCode != null">
+                #{watershedCode,jdbcType=VARCHAR},
+            </if>
+            <if test="watershedName != null">
+                #{watershedName,jdbcType=VARCHAR},
+            </if>
+            <if test="riversysCode != null">
+                #{riversysCode,jdbcType=VARCHAR},
+            </if>
+            <if test="riversysName != null">
+                #{riversysName,jdbcType=VARCHAR},
+            </if>
+            <if test="riverCode != null">
+                #{riverCode,jdbcType=VARCHAR},
+            </if>
+            <if test="riverName != null">
+                #{riverName,jdbcType=VARCHAR},
+            </if>
+            <if test="monitorYear != null">
+                #{monitorYear,jdbcType=INTEGER},
+            </if>
+            <if test="monitorMonth != null">
+                #{monitorMonth,jdbcType=TINYINT},
+            </if>
+            <if test="monitorDay != null">
+                #{monitorDay,jdbcType=TINYINT},
+            </if>
+            <if test="dailyAcculate != null">
+                #{dailyAcculate,jdbcType=DECIMAL},
+            </if>
+            <if test="timePeriod != null">
+                #{timePeriod,jdbcType=DECIMAL},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yunli.ecology.search.schema.entity.YlIotRainfallDaily">
+        update yl_iot_rainfall_daily
+        <set>
+            <if test="stationName != null">
+                station_name = #{stationName,jdbcType=VARCHAR},
+            </if>
+            <if test="provRegionCode != null">
+                prov_region_code = #{provRegionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="provRegionName != null">
+                prov_region_name = #{provRegionName,jdbcType=VARCHAR},
+            </if>
+            <if test="cityRegionCode != null">
+                city_region_code = #{cityRegionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cityRegionName != null">
+                city_region_name = #{cityRegionName,jdbcType=VARCHAR},
+            </if>
+            <if test="districtRegionCode != null">
+                district_region_code = #{districtRegionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="districtRegionName != null">
+                district_region_name = #{districtRegionName,jdbcType=VARCHAR},
+            </if>
+            <if test="lng != null">
+                lng = #{lng,jdbcType=DECIMAL},
+            </if>
+            <if test="lat != null">
+                lat = #{lat,jdbcType=DECIMAL},
+            </if>
+            <if test="stationLoc != null">
+                station_loc = #{stationLoc,jdbcType=VARCHAR},
+            </if>
+            <if test="watershedCode != null">
+                watershed_code = #{watershedCode,jdbcType=VARCHAR},
+            </if>
+            <if test="watershedName != null">
+                watershed_name = #{watershedName,jdbcType=VARCHAR},
+            </if>
+            <if test="riversysCode != null">
+                riversys_code = #{riversysCode,jdbcType=VARCHAR},
+            </if>
+            <if test="riversysName != null">
+                riversys_name = #{riversysName,jdbcType=VARCHAR},
+            </if>
+            <if test="riverCode != null">
+                river_code = #{riverCode,jdbcType=VARCHAR},
+            </if>
+            <if test="riverName != null">
+                river_name = #{riverName,jdbcType=VARCHAR},
+            </if>
+            <if test="monitorYear != null">
+                monitor_year = #{monitorYear,jdbcType=INTEGER},
+            </if>
+            <if test="monitorMonth != null">
+                monitor_month = #{monitorMonth,jdbcType=TINYINT},
+            </if>
+            <if test="monitorDay != null">
+                monitor_day = #{monitorDay,jdbcType=TINYINT},
+            </if>
+            <if test="dailyAcculate != null">
+                daily_acculate = #{dailyAcculate,jdbcType=DECIMAL},
+            </if>
+            <if test="timePeriod != null">
+                time_period = #{timePeriod,jdbcType=DECIMAL},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where station_code = #{stationCode,jdbcType=VARCHAR}
+        and monitor_date = #{monitorDate,jdbcType=DATE}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yunli.ecology.search.schema.entity.YlIotRainfallDaily">
+        update yl_iot_rainfall_daily
+        set station_name         = #{stationName,jdbcType=VARCHAR},
+            prov_region_code     = #{provRegionCode,jdbcType=VARCHAR},
+            prov_region_name     = #{provRegionName,jdbcType=VARCHAR},
+            city_region_code     = #{cityRegionCode,jdbcType=VARCHAR},
+            city_region_name     = #{cityRegionName,jdbcType=VARCHAR},
+            district_region_code = #{districtRegionCode,jdbcType=VARCHAR},
+            district_region_name = #{districtRegionName,jdbcType=VARCHAR},
+            lng                  = #{lng,jdbcType=DECIMAL},
+            lat                  = #{lat,jdbcType=DECIMAL},
+            station_loc          = #{stationLoc,jdbcType=VARCHAR},
+            watershed_code       = #{watershedCode,jdbcType=VARCHAR},
+            watershed_name       = #{watershedName,jdbcType=VARCHAR},
+            riversys_code        = #{riversysCode,jdbcType=VARCHAR},
+            riversys_name        = #{riversysName,jdbcType=VARCHAR},
+            river_code           = #{riverCode,jdbcType=VARCHAR},
+            river_name           = #{riverName,jdbcType=VARCHAR},
+            monitor_year         = #{monitorYear,jdbcType=INTEGER},
+            monitor_month        = #{monitorMonth,jdbcType=TINYINT},
+            monitor_day          = #{monitorDay,jdbcType=TINYINT},
+            daily_acculate       = #{dailyAcculate,jdbcType=DECIMAL},
+            time_period          = #{timePeriod,jdbcType=DECIMAL},
+            remark               = #{remark,jdbcType=VARCHAR},
+            create_time          = #{createTime,jdbcType=TIMESTAMP},
+            update_time          = #{updateTime,jdbcType=TIMESTAMP}
+        where station_code = #{stationCode,jdbcType=VARCHAR}
+          and monitor_date = #{monitorDate,jdbcType=DATE}
+    </update>
+</mapper>

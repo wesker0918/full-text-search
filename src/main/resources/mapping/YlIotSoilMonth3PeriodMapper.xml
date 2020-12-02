@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yunli.ecology.search.repository.mybatis.YlIotSoilMonth3PeriodMapper">
+    <resultMap id="BaseResultMap" type="com.yunli.ecology.search.schema.entity.YlIotSoilMonth3Period">
+        <id column="station_code" jdbcType="VARCHAR" property="stationCode"/>
+        <id column="monitor_freq_ym" jdbcType="CHAR" property="monitorFreqYm"/>
+        <id column="monitor_month_peirod" jdbcType="TINYINT" property="monitorMonthPeirod"/>
+        <result column="station_name" jdbcType="VARCHAR" property="stationName"/>
+        <result column="station_type_code" jdbcType="VARCHAR" property="stationTypeCode"/>
+        <result column="station_type_name" jdbcType="VARCHAR" property="stationTypeName"/>
+        <result column="monitor_month_peirod_name" jdbcType="VARCHAR" property="monitorMonthPeirodName"/>
+        <result column="monitor_freq_query" jdbcType="CHAR" property="monitorFreqQuery"/>
+        <result column="monitor_date_time" jdbcType="TIMESTAMP" property="monitorDateTime"/>
+        <result column="prov_region_code" jdbcType="VARCHAR" property="provRegionCode"/>
+        <result column="prov_region_name" jdbcType="VARCHAR" property="provRegionName"/>
+        <result column="city_region_code" jdbcType="VARCHAR" property="cityRegionCode"/>
+        <result column="city_region_name" jdbcType="VARCHAR" property="cityRegionName"/>
+        <result column="district_region_code" jdbcType="VARCHAR" property="districtRegionCode"/>
+        <result column="district_region_name" jdbcType="VARCHAR" property="districtRegionName"/>
+        <result column="lng" jdbcType="DECIMAL" property="lng"/>
+        <result column="lat" jdbcType="DECIMAL" property="lat"/>
+        <result column="station_loc" jdbcType="VARCHAR" property="stationLoc"/>
+        <result column="watershed_code" jdbcType="VARCHAR" property="watershedCode"/>
+        <result column="watershed_name" jdbcType="VARCHAR" property="watershedName"/>
+        <result column="riversys_code" jdbcType="VARCHAR" property="riversysCode"/>
+        <result column="riversys_name" jdbcType="VARCHAR" property="riversysName"/>
+        <result column="river_code" jdbcType="VARCHAR" property="riverCode"/>
+        <result column="river_name" jdbcType="VARCHAR" property="riverName"/>
+        <result column="soil_moisture_10cm" jdbcType="DECIMAL" property="soilMoisture10cm"/>
+        <result column="soil_moisture_20cm" jdbcType="DECIMAL" property="soilMoisture20cm"/>
+        <result column="soil_moisture_30cm" jdbcType="DECIMAL" property="soilMoisture30cm"/>
+        <result column="soil_moisture_40cm" jdbcType="DECIMAL" property="soilMoisture40cm"/>
+        <result column="soil_moisture_60cm" jdbcType="DECIMAL" property="soilMoisture60cm"/>
+        <result column="soil_moisture_80cm" jdbcType="DECIMAL" property="soilMoisture80cm"/>
+        <result column="soil_moisture_100cm" jdbcType="DECIMAL" property="soilMoisture100cm"/>
+        <result column="soil_type_code" jdbcType="VARCHAR" property="soilTypeCode"/>
+        <result column="soil_type_name" jdbcType="VARCHAR" property="soilTypeName"/>
+        <result column="feature_field_capacity" jdbcType="DECIMAL" property="featureFieldCapacity"/>
+        <result column="feature_comments" jdbcType="VARCHAR" property="featureComments"/>
+        <result column="feature_moditime" jdbcType="TIMESTAMP" property="featureModitime"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        station_code, monitor_freq_ym, monitor_month_peirod, station_name, station_type_code,
+    station_type_name, monitor_month_peirod_name, monitor_freq_query, monitor_date_time, 
+    prov_region_code, prov_region_name, city_region_code, city_region_name, district_region_code, 
+    district_region_name, lng, lat, station_loc, watershed_code, watershed_name, riversys_code, 
+    riversys_name, river_code, river_name, soil_moisture_10cm, soil_moisture_20cm, soil_moisture_30cm, 
+    soil_moisture_40cm, soil_moisture_60cm, soil_moisture_80cm, soil_moisture_100cm, 
+    soil_type_code, soil_type_name, feature_field_capacity, feature_comments, feature_moditime, 
+    remark, create_time, update_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="com.yunli.ecology.search.schema.entity.YlIotSoilMonth3PeriodKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from yl_iot_soil_month_3period
+        where station_code = #{stationCode,jdbcType=VARCHAR}
+        and monitor_freq_ym = #{monitorFreqYm,jdbcType=CHAR}
+        and monitor_month_peirod = #{monitorMonthPeirod,jdbcType=TINYINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="com.yunli.ecology.search.schema.entity.YlIotSoilMonth3PeriodKey">
+        delete
+        from yl_iot_soil_month_3period
+        where station_code = #{stationCode,jdbcType=VARCHAR}
+          and monitor_freq_ym = #{monitorFreqYm,jdbcType=CHAR}
+          and monitor_month_peirod = #{monitorMonthPeirod,jdbcType=TINYINT}
+    </delete>
+    <insert id="insert" parameterType="com.yunli.ecology.search.schema.entity.YlIotSoilMonth3Period">
+        insert into yl_iot_soil_month_3period (station_code, monitor_freq_ym, monitor_month_peirod,
+                                               station_name, station_type_code, station_type_name,
+                                               monitor_month_peirod_name, monitor_freq_query,
+                                               monitor_date_time, prov_region_code, prov_region_name,
+                                               city_region_code, city_region_name, district_region_code,
+                                               district_region_name, lng, lat,
+                                               station_loc, watershed_code, watershed_name,
+                                               riversys_code, riversys_name, river_code,
+                                               river_name, soil_moisture_10cm, soil_moisture_20cm,
+                                               soil_moisture_30cm, soil_moisture_40cm, soil_moisture_60cm,
+                                               soil_moisture_80cm, soil_moisture_100cm, soil_type_code,
+                                               soil_type_name, feature_field_capacity, feature_comments,
+                                               feature_moditime, remark, create_time,
+                                               update_time)
+        values (#{stationCode,jdbcType=VARCHAR}, #{monitorFreqYm,jdbcType=CHAR}, #{monitorMonthPeirod,jdbcType=TINYINT},
+                #{stationName,jdbcType=VARCHAR}, #{stationTypeCode,jdbcType=VARCHAR}, #{stationTypeName,jdbcType=VARCHAR},
+                #{monitorMonthPeirodName,jdbcType=VARCHAR}, #{monitorFreqQuery,jdbcType=CHAR},
+                #{monitorDateTime,jdbcType=TIMESTAMP}, #{provRegionCode,jdbcType=VARCHAR}, #{provRegionName,jdbcType=VARCHAR},
+                #{cityRegionCode,jdbcType=VARCHAR}, #{cityRegionName,jdbcType=VARCHAR}, #{districtRegionCode,jdbcType=VARCHAR},
+                #{districtRegionName,jdbcType=VARCHAR}, #{lng,jdbcType=DECIMAL}, #{lat,jdbcType=DECIMAL},
+                #{stationLoc,jdbcType=VARCHAR}, #{watershedCode,jdbcType=VARCHAR}, #{watershedName,jdbcType=VARCHAR},
+                #{riversysCode,jdbcType=VARCHAR}, #{riversysName,jdbcType=VARCHAR}, #{riverCode,jdbcType=VARCHAR},
+                #{riverName,jdbcType=VARCHAR}, #{soilMoisture10cm,jdbcType=DECIMAL}, #{soilMoisture20cm,jdbcType=DECIMAL},
+                #{soilMoisture30cm,jdbcType=DECIMAL}, #{soilMoisture40cm,jdbcType=DECIMAL}, #{soilMoisture60cm,jdbcType=DECIMAL},
+                #{soilMoisture80cm,jdbcType=DECIMAL}, #{soilMoisture100cm,jdbcType=DECIMAL}, #{soilTypeCode,jdbcType=VARCHAR},
+                #{soilTypeName,jdbcType=VARCHAR}, #{featureFieldCapacity,jdbcType=DECIMAL}, #{featureComments,jdbcType=VARCHAR},
+                #{featureModitime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
+                #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.yunli.ecology.search.schema.entity.YlIotSoilMonth3Period">
+        insert into yl_iot_soil_month_3period
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="stationCode != null">
+                station_code,
+            </if>
+            <if test="monitorFreqYm != null">
+                monitor_freq_ym,
+            </if>
+            <if test="monitorMonthPeirod != null">
+                monitor_month_peirod,
+            </if>
+            <if test="stationName != null">
+                station_name,
+            </if>
+            <if test="stationTypeCode != null">
+                station_type_code,
+            </if>
+            <if test="stationTypeName != null">
+                station_type_name,
+            </if>
+            <if test="monitorMonthPeirodName != null">
+                monitor_month_peirod_name,
+            </if>
+            <if test="monitorFreqQuery != null">
+                monitor_freq_query,
+            </if>
+            <if test="monitorDateTime != null">
+                monitor_date_time,
+            </if>
+            <if test="provRegionCode != null">
+                prov_region_code,
+            </if>
+            <if test="provRegionName != null">
+                prov_region_name,
+            </if>
+            <if test="cityRegionCode != null">
+                city_region_code,
+            </if>
+            <if test="cityRegionName != null">
+                city_region_name,
+            </if>
+            <if test="districtRegionCode != null">
+                district_region_code,
+            </if>
+            <if test="districtRegionName != null">
+                district_region_name,
+            </if>
+            <if test="lng != null">
+                lng,
+            </if>
+            <if test="lat != null">
+                lat,
+            </if>
+            <if test="stationLoc != null">
+                station_loc,
+            </if>
+            <if test="watershedCode != null">
+                watershed_code,
+            </if>
+            <if test="watershedName != null">
+                watershed_name,
+            </if>
+            <if test="riversysCode != null">
+                riversys_code,
+            </if>
+            <if test="riversysName != null">
+                riversys_name,
+            </if>
+            <if test="riverCode != null">
+                river_code,
+            </if>
+            <if test="riverName != null">
+                river_name,
+            </if>
+            <if test="soilMoisture10cm != null">
+                soil_moisture_10cm,
+            </if>
+            <if test="soilMoisture20cm != null">
+                soil_moisture_20cm,
+            </if>
+            <if test="soilMoisture30cm != null">
+                soil_moisture_30cm,
+            </if>
+            <if test="soilMoisture40cm != null">
+                soil_moisture_40cm,
+            </if>
+            <if test="soilMoisture60cm != null">
+                soil_moisture_60cm,
+            </if>
+            <if test="soilMoisture80cm != null">
+                soil_moisture_80cm,
+            </if>
+            <if test="soilMoisture100cm != null">
+                soil_moisture_100cm,
+            </if>
+            <if test="soilTypeCode != null">
+                soil_type_code,
+            </if>
+            <if test="soilTypeName != null">
+                soil_type_name,
+            </if>
+            <if test="featureFieldCapacity != null">
+                feature_field_capacity,
+            </if>
+            <if test="featureComments != null">
+                feature_comments,
+            </if>
+            <if test="featureModitime != null">
+                feature_moditime,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="stationCode != null">
+                #{stationCode,jdbcType=VARCHAR},
+            </if>
+            <if test="monitorFreqYm != null">
+                #{monitorFreqYm,jdbcType=CHAR},
+            </if>
+            <if test="monitorMonthPeirod != null">
+                #{monitorMonthPeirod,jdbcType=TINYINT},
+            </if>
+            <if test="stationName != null">
+                #{stationName,jdbcType=VARCHAR},
+            </if>
+            <if test="stationTypeCode != null">
+                #{stationTypeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="stationTypeName != null">
+                #{stationTypeName,jdbcType=VARCHAR},
+            </if>
+            <if test="monitorMonthPeirodName != null">
+                #{monitorMonthPeirodName,jdbcType=VARCHAR},
+            </if>
+            <if test="monitorFreqQuery != null">
+                #{monitorFreqQuery,jdbcType=CHAR},
+            </if>
+            <if test="monitorDateTime != null">
+                #{monitorDateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="provRegionCode != null">
+                #{provRegionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="provRegionName != null">
+                #{provRegionName,jdbcType=VARCHAR},
+            </if>
+            <if test="cityRegionCode != null">
+                #{cityRegionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cityRegionName != null">
+                #{cityRegionName,jdbcType=VARCHAR},
+            </if>
+            <if test="districtRegionCode != null">
+                #{districtRegionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="districtRegionName != null">
+                #{districtRegionName,jdbcType=VARCHAR},
+            </if>
+            <if test="lng != null">
+                #{lng,jdbcType=DECIMAL},
+            </if>
+            <if test="lat != null">
+                #{lat,jdbcType=DECIMAL},
+            </if>
+            <if test="stationLoc != null">
+                #{stationLoc,jdbcType=VARCHAR},
+            </if>
+            <if test="watershedCode != null">
+                #{watershedCode,jdbcType=VARCHAR},
+            </if>
+            <if test="watershedName != null">
+                #{watershedName,jdbcType=VARCHAR},
+            </if>
+            <if test="riversysCode != null">
+                #{riversysCode,jdbcType=VARCHAR},
+            </if>
+            <if test="riversysName != null">
+                #{riversysName,jdbcType=VARCHAR},
+            </if>
+            <if test="riverCode != null">
+                #{riverCode,jdbcType=VARCHAR},
+            </if>
+            <if test="riverName != null">
+                #{riverName,jdbcType=VARCHAR},
+            </if>
+            <if test="soilMoisture10cm != null">
+                #{soilMoisture10cm,jdbcType=DECIMAL},
+            </if>
+            <if test="soilMoisture20cm != null">
+                #{soilMoisture20cm,jdbcType=DECIMAL},
+            </if>
+            <if test="soilMoisture30cm != null">
+                #{soilMoisture30cm,jdbcType=DECIMAL},
+            </if>
+            <if test="soilMoisture40cm != null">
+                #{soilMoisture40cm,jdbcType=DECIMAL},
+            </if>
+            <if test="soilMoisture60cm != null">
+                #{soilMoisture60cm,jdbcType=DECIMAL},
+            </if>
+            <if test="soilMoisture80cm != null">
+                #{soilMoisture80cm,jdbcType=DECIMAL},
+            </if>
+            <if test="soilMoisture100cm != null">
+                #{soilMoisture100cm,jdbcType=DECIMAL},
+            </if>
+            <if test="soilTypeCode != null">
+                #{soilTypeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="soilTypeName != null">
+                #{soilTypeName,jdbcType=VARCHAR},
+            </if>
+            <if test="featureFieldCapacity != null">
+                #{featureFieldCapacity,jdbcType=DECIMAL},
+            </if>
+            <if test="featureComments != null">
+                #{featureComments,jdbcType=VARCHAR},
+            </if>
+            <if test="featureModitime != null">
+                #{featureModitime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yunli.ecology.search.schema.entity.YlIotSoilMonth3Period">
+        update yl_iot_soil_month_3period
+        <set>
+            <if test="stationName != null">
+                station_name = #{stationName,jdbcType=VARCHAR},
+            </if>
+            <if test="stationTypeCode != null">
+                station_type_code = #{stationTypeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="stationTypeName != null">
+                station_type_name = #{stationTypeName,jdbcType=VARCHAR},
+            </if>
+            <if test="monitorMonthPeirodName != null">
+                monitor_month_peirod_name = #{monitorMonthPeirodName,jdbcType=VARCHAR},
+            </if>
+            <if test="monitorFreqQuery != null">
+                monitor_freq_query = #{monitorFreqQuery,jdbcType=CHAR},
+            </if>
+            <if test="monitorDateTime != null">
+                monitor_date_time = #{monitorDateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="provRegionCode != null">
+                prov_region_code = #{provRegionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="provRegionName != null">
+                prov_region_name = #{provRegionName,jdbcType=VARCHAR},
+            </if>
+            <if test="cityRegionCode != null">
+                city_region_code = #{cityRegionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cityRegionName != null">
+                city_region_name = #{cityRegionName,jdbcType=VARCHAR},
+            </if>
+            <if test="districtRegionCode != null">
+                district_region_code = #{districtRegionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="districtRegionName != null">
+                district_region_name = #{districtRegionName,jdbcType=VARCHAR},
+            </if>
+            <if test="lng != null">
+                lng = #{lng,jdbcType=DECIMAL},
+            </if>
+            <if test="lat != null">
+                lat = #{lat,jdbcType=DECIMAL},
+            </if>
+            <if test="stationLoc != null">
+                station_loc = #{stationLoc,jdbcType=VARCHAR},
+            </if>
+            <if test="watershedCode != null">
+                watershed_code = #{watershedCode,jdbcType=VARCHAR},
+            </if>
+            <if test="watershedName != null">
+                watershed_name = #{watershedName,jdbcType=VARCHAR},
+            </if>
+            <if test="riversysCode != null">
+                riversys_code = #{riversysCode,jdbcType=VARCHAR},
+            </if>
+            <if test="riversysName != null">
+                riversys_name = #{riversysName,jdbcType=VARCHAR},
+            </if>
+            <if test="riverCode != null">
+                river_code = #{riverCode,jdbcType=VARCHAR},
+            </if>
+            <if test="riverName != null">
+                river_name = #{riverName,jdbcType=VARCHAR},
+            </if>
+            <if test="soilMoisture10cm != null">
+                soil_moisture_10cm = #{soilMoisture10cm,jdbcType=DECIMAL},
+            </if>
+            <if test="soilMoisture20cm != null">
+                soil_moisture_20cm = #{soilMoisture20cm,jdbcType=DECIMAL},
+            </if>
+            <if test="soilMoisture30cm != null">
+                soil_moisture_30cm = #{soilMoisture30cm,jdbcType=DECIMAL},
+            </if>
+            <if test="soilMoisture40cm != null">
+                soil_moisture_40cm = #{soilMoisture40cm,jdbcType=DECIMAL},
+            </if>
+            <if test="soilMoisture60cm != null">
+                soil_moisture_60cm = #{soilMoisture60cm,jdbcType=DECIMAL},
+            </if>
+            <if test="soilMoisture80cm != null">
+                soil_moisture_80cm = #{soilMoisture80cm,jdbcType=DECIMAL},
+            </if>
+            <if test="soilMoisture100cm != null">
+                soil_moisture_100cm = #{soilMoisture100cm,jdbcType=DECIMAL},
+            </if>
+            <if test="soilTypeCode != null">
+                soil_type_code = #{soilTypeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="soilTypeName != null">
+                soil_type_name = #{soilTypeName,jdbcType=VARCHAR},
+            </if>
+            <if test="featureFieldCapacity != null">
+                feature_field_capacity = #{featureFieldCapacity,jdbcType=DECIMAL},
+            </if>
+            <if test="featureComments != null">
+                feature_comments = #{featureComments,jdbcType=VARCHAR},
+            </if>
+            <if test="featureModitime != null">
+                feature_moditime = #{featureModitime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where station_code = #{stationCode,jdbcType=VARCHAR}
+        and monitor_freq_ym = #{monitorFreqYm,jdbcType=CHAR}
+        and monitor_month_peirod = #{monitorMonthPeirod,jdbcType=TINYINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yunli.ecology.search.schema.entity.YlIotSoilMonth3Period">
+        update yl_iot_soil_month_3period
+        set station_name              = #{stationName,jdbcType=VARCHAR},
+            station_type_code         = #{stationTypeCode,jdbcType=VARCHAR},
+            station_type_name         = #{stationTypeName,jdbcType=VARCHAR},
+            monitor_month_peirod_name = #{monitorMonthPeirodName,jdbcType=VARCHAR},
+            monitor_freq_query        = #{monitorFreqQuery,jdbcType=CHAR},
+            monitor_date_time         = #{monitorDateTime,jdbcType=TIMESTAMP},
+            prov_region_code          = #{provRegionCode,jdbcType=VARCHAR},
+            prov_region_name          = #{provRegionName,jdbcType=VARCHAR},
+            city_region_code          = #{cityRegionCode,jdbcType=VARCHAR},
+            city_region_name          = #{cityRegionName,jdbcType=VARCHAR},
+            district_region_code      = #{districtRegionCode,jdbcType=VARCHAR},
+            district_region_name      = #{districtRegionName,jdbcType=VARCHAR},
+            lng                       = #{lng,jdbcType=DECIMAL},
+            lat                       = #{lat,jdbcType=DECIMAL},
+            station_loc               = #{stationLoc,jdbcType=VARCHAR},
+            watershed_code            = #{watershedCode,jdbcType=VARCHAR},
+            watershed_name            = #{watershedName,jdbcType=VARCHAR},
+            riversys_code             = #{riversysCode,jdbcType=VARCHAR},
+            riversys_name             = #{riversysName,jdbcType=VARCHAR},
+            river_code                = #{riverCode,jdbcType=VARCHAR},
+            river_name                = #{riverName,jdbcType=VARCHAR},
+            soil_moisture_10cm        = #{soilMoisture10cm,jdbcType=DECIMAL},
+            soil_moisture_20cm        = #{soilMoisture20cm,jdbcType=DECIMAL},
+            soil_moisture_30cm        = #{soilMoisture30cm,jdbcType=DECIMAL},
+            soil_moisture_40cm        = #{soilMoisture40cm,jdbcType=DECIMAL},
+            soil_moisture_60cm        = #{soilMoisture60cm,jdbcType=DECIMAL},
+            soil_moisture_80cm        = #{soilMoisture80cm,jdbcType=DECIMAL},
+            soil_moisture_100cm       = #{soilMoisture100cm,jdbcType=DECIMAL},
+            soil_type_code            = #{soilTypeCode,jdbcType=VARCHAR},
+            soil_type_name            = #{soilTypeName,jdbcType=VARCHAR},
+            feature_field_capacity    = #{featureFieldCapacity,jdbcType=DECIMAL},
+            feature_comments          = #{featureComments,jdbcType=VARCHAR},
+            feature_moditime          = #{featureModitime,jdbcType=TIMESTAMP},
+            remark                    = #{remark,jdbcType=VARCHAR},
+            create_time               = #{createTime,jdbcType=TIMESTAMP},
+            update_time               = #{updateTime,jdbcType=TIMESTAMP}
+        where station_code = #{stationCode,jdbcType=VARCHAR}
+          and monitor_freq_ym = #{monitorFreqYm,jdbcType=CHAR}
+          and monitor_month_peirod = #{monitorMonthPeirod,jdbcType=TINYINT}
+    </update>
+</mapper>

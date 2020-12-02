@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yunli.ecology.search.repository.mybatis.YlIotReservoirWaterHourlyMapper">
+    <resultMap id="BaseResultMap" type="com.yunli.ecology.search.schema.entity.YlIotReservoirWaterHourly">
+        <id column="station_code" jdbcType="VARCHAR" property="stationCode"/>
+        <id column="monitor_date_time" jdbcType="TIMESTAMP" property="monitorDateTime"/>
+        <result column="station_name" jdbcType="VARCHAR" property="stationName"/>
+        <result column="orgin_monitor_date_time" jdbcType="TIMESTAMP" property="orginMonitorDateTime"/>
+        <result column="prov_region_code" jdbcType="VARCHAR" property="provRegionCode"/>
+        <result column="prov_region_name" jdbcType="VARCHAR" property="provRegionName"/>
+        <result column="city_region_code" jdbcType="VARCHAR" property="cityRegionCode"/>
+        <result column="city_region_name" jdbcType="VARCHAR" property="cityRegionName"/>
+        <result column="district_region_code" jdbcType="VARCHAR" property="districtRegionCode"/>
+        <result column="district_region_name" jdbcType="VARCHAR" property="districtRegionName"/>
+        <result column="lng" jdbcType="DECIMAL" property="lng"/>
+        <result column="lat" jdbcType="DECIMAL" property="lat"/>
+        <result column="station_loc" jdbcType="VARCHAR" property="stationLoc"/>
+        <result column="watershed_code" jdbcType="VARCHAR" property="watershedCode"/>
+        <result column="watershed_name" jdbcType="VARCHAR" property="watershedName"/>
+        <result column="riversys_code" jdbcType="VARCHAR" property="riversysCode"/>
+        <result column="riversys_name" jdbcType="VARCHAR" property="riversysName"/>
+        <result column="river_code" jdbcType="VARCHAR" property="riverCode"/>
+        <result column="river_name" jdbcType="VARCHAR" property="riverName"/>
+        <result column="monitor_date" jdbcType="CHAR" property="monitorDate"/>
+        <result column="monitor_hour" jdbcType="TINYINT" property="monitorHour"/>
+        <result column="in_flow" jdbcType="DECIMAL" property="inFlow"/>
+        <result column="out_flow" jdbcType="DECIMAL" property="outFlow"/>
+        <result column="water_level" jdbcType="DECIMAL" property="waterLevel"/>
+        <result column="monitor_capacity" jdbcType="DECIMAL" property="monitorCapacity"/>
+        <result column="water_level_variety" jdbcType="TINYINT" property="waterLevelVariety"/>
+        <result column="water_level_variety_name" jdbcType="VARCHAR" property="waterLevelVarietyName"/>
+        <result column="latest_monitor_date_time" jdbcType="TIMESTAMP" property="latestMonitorDateTime"/>
+        <result column="latest_in_flow" jdbcType="DECIMAL" property="latestInFlow"/>
+        <result column="latest_out_flow" jdbcType="DECIMAL" property="latestOutFlow"/>
+        <result column="latest_water_level" jdbcType="DECIMAL" property="latestWaterLevel"/>
+        <result column="latest_monitor_capacity" jdbcType="DECIMAL" property="latestMonitorCapacity"/>
+        <result column="total_capacity" jdbcType="DECIMAL" property="totalCapacity"/>
+        <result column="nomal_water_level" jdbcType="DECIMAL" property="nomalWaterLevel"/>
+        <result column="reservoir_grade" jdbcType="VARCHAR" property="reservoirGrade"/>
+        <result column="reservoir_grade_name" jdbcType="VARCHAR" property="reservoirGradeName"/>
+        <result column="flood_low_limit_level" jdbcType="DECIMAL" property="floodLowLimitLevel"/>
+        <result column="flood_low_limit_capacity" jdbcType="DECIMAL" property="floodLowLimitCapacity"/>
+        <result column="flood_season_type_code" jdbcType="VARCHAR" property="floodSeasonTypeCode"/>
+        <result column="flood_season_type_name" jdbcType="VARCHAR" property="floodSeasonTypeName"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        station_code, monitor_date_time, station_name, orgin_monitor_date_time, prov_region_code,
+    prov_region_name, city_region_code, city_region_name, district_region_code, district_region_name, 
+    lng, lat, station_loc, watershed_code, watershed_name, riversys_code, riversys_name, 
+    river_code, river_name, monitor_date, monitor_hour, in_flow, out_flow, water_level, 
+    monitor_capacity, water_level_variety, water_level_variety_name, latest_monitor_date_time, 
+    latest_in_flow, latest_out_flow, latest_water_level, latest_monitor_capacity, total_capacity, 
+    nomal_water_level, reservoir_grade, reservoir_grade_name, flood_low_limit_level, 
+    flood_low_limit_capacity, flood_season_type_code, flood_season_type_name, remark, 
+    create_time, update_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="com.yunli.ecology.search.schema.entity.YlIotReservoirWaterHourlyKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from yl_iot_reservoirwater_hourly
+        where station_code = #{stationCode,jdbcType=VARCHAR}
+        and monitor_date_time = #{monitorDateTime,jdbcType=TIMESTAMP}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="com.yunli.ecology.search.schema.entity.YlIotReservoirWaterHourlyKey">
+        delete
+        from yl_iot_reservoirwater_hourly
+        where station_code = #{stationCode,jdbcType=VARCHAR}
+          and monitor_date_time = #{monitorDateTime,jdbcType=TIMESTAMP}
+    </delete>
+    <insert id="insert" parameterType="com.yunli.ecology.search.schema.entity.YlIotReservoirWaterHourly">
+        insert into yl_iot_reservoirwater_hourly (station_code, monitor_date_time, station_name,
+                                                  orgin_monitor_date_time, prov_region_code,
+                                                  prov_region_name, city_region_code, city_region_name,
+                                                  district_region_code, district_region_name,
+                                                  lng, lat, station_loc,
+                                                  watershed_code, watershed_name, riversys_code,
+                                                  riversys_name, river_code, river_name,
+                                                  monitor_date, monitor_hour, in_flow,
+                                                  out_flow, water_level, monitor_capacity,
+                                                  water_level_variety, water_level_variety_name,
+                                                  latest_monitor_date_time, latest_in_flow,
+                                                  latest_out_flow, latest_water_level, latest_monitor_capacity,
+                                                  total_capacity, nomal_water_level, reservoir_grade,
+                                                  reservoir_grade_name, flood_low_limit_level,
+                                                  flood_low_limit_capacity, flood_season_type_code,
+                                                  flood_season_type_name, remark, create_time,
+                                                  update_time)
+        values (#{stationCode,jdbcType=VARCHAR}, #{monitorDateTime,jdbcType=TIMESTAMP}, #{stationName,jdbcType=VARCHAR},
+                #{orginMonitorDateTime,jdbcType=TIMESTAMP}, #{provRegionCode,jdbcType=VARCHAR},
+                #{provRegionName,jdbcType=VARCHAR}, #{cityRegionCode,jdbcType=VARCHAR}, #{cityRegionName,jdbcType=VARCHAR},
+                #{districtRegionCode,jdbcType=VARCHAR}, #{districtRegionName,jdbcType=VARCHAR},
+                #{lng,jdbcType=DECIMAL}, #{lat,jdbcType=DECIMAL}, #{stationLoc,jdbcType=VARCHAR},
+                #{watershedCode,jdbcType=VARCHAR}, #{watershedName,jdbcType=VARCHAR}, #{riversysCode,jdbcType=VARCHAR},
+                #{riversysName,jdbcType=VARCHAR}, #{riverCode,jdbcType=VARCHAR}, #{riverName,jdbcType=VARCHAR},
+                #{monitorDate,jdbcType=CHAR}, #{monitorHour,jdbcType=TINYINT}, #{inFlow,jdbcType=DECIMAL},
+                #{outFlow,jdbcType=DECIMAL}, #{waterLevel,jdbcType=DECIMAL}, #{monitorCapacity,jdbcType=DECIMAL},
+                #{waterLevelVariety,jdbcType=TINYINT}, #{waterLevelVarietyName,jdbcType=VARCHAR},
+                #{latestMonitorDateTime,jdbcType=TIMESTAMP}, #{latestInFlow,jdbcType=DECIMAL},
+                #{latestOutFlow,jdbcType=DECIMAL}, #{latestWaterLevel,jdbcType=DECIMAL}, #{latestMonitorCapacity,jdbcType=DECIMAL},
+                #{totalCapacity,jdbcType=DECIMAL}, #{nomalWaterLevel,jdbcType=DECIMAL}, #{reservoirGrade,jdbcType=VARCHAR},
+                #{reservoirGradeName,jdbcType=VARCHAR}, #{floodLowLimitLevel,jdbcType=DECIMAL},
+                #{floodLowLimitCapacity,jdbcType=DECIMAL}, #{floodSeasonTypeCode,jdbcType=VARCHAR},
+                #{floodSeasonTypeName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
+                #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.yunli.ecology.search.schema.entity.YlIotReservoirWaterHourly">
+        insert into yl_iot_reservoirwater_hourly
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="stationCode != null">
+                station_code,
+            </if>
+            <if test="monitorDateTime != null">
+                monitor_date_time,
+            </if>
+            <if test="stationName != null">
+                station_name,
+            </if>
+            <if test="orginMonitorDateTime != null">
+                orgin_monitor_date_time,
+            </if>
+            <if test="provRegionCode != null">
+                prov_region_code,
+            </if>
+            <if test="provRegionName != null">
+                prov_region_name,
+            </if>
+            <if test="cityRegionCode != null">
+                city_region_code,
+            </if>
+            <if test="cityRegionName != null">
+                city_region_name,
+            </if>
+            <if test="districtRegionCode != null">
+                district_region_code,
+            </if>
+            <if test="districtRegionName != null">
+                district_region_name,
+            </if>
+            <if test="lng != null">
+                lng,
+            </if>
+            <if test="lat != null">
+                lat,
+            </if>
+            <if test="stationLoc != null">
+                station_loc,
+            </if>
+            <if test="watershedCode != null">
+                watershed_code,
+            </if>
+            <if test="watershedName != null">
+                watershed_name,
+            </if>
+            <if test="riversysCode != null">
+                riversys_code,
+            </if>
+            <if test="riversysName != null">
+                riversys_name,
+            </if>
+            <if test="riverCode != null">
+                river_code,
+            </if>
+            <if test="riverName != null">
+                river_name,
+            </if>
+            <if test="monitorDate != null">
+                monitor_date,
+            </if>
+            <if test="monitorHour != null">
+                monitor_hour,
+            </if>
+            <if test="inFlow != null">
+                in_flow,
+            </if>
+            <if test="outFlow != null">
+                out_flow,
+            </if>
+            <if test="waterLevel != null">
+                water_level,
+            </if>
+            <if test="monitorCapacity != null">
+                monitor_capacity,
+            </if>
+            <if test="waterLevelVariety != null">
+                water_level_variety,
+            </if>
+            <if test="waterLevelVarietyName != null">
+                water_level_variety_name,
+            </if>
+            <if test="latestMonitorDateTime != null">
+                latest_monitor_date_time,
+            </if>
+            <if test="latestInFlow != null">
+                latest_in_flow,
+            </if>
+            <if test="latestOutFlow != null">
+                latest_out_flow,
+            </if>
+            <if test="latestWaterLevel != null">
+                latest_water_level,
+            </if>
+            <if test="latestMonitorCapacity != null">
+                latest_monitor_capacity,
+            </if>
+            <if test="totalCapacity != null">
+                total_capacity,
+            </if>
+            <if test="nomalWaterLevel != null">
+                nomal_water_level,
+            </if>
+            <if test="reservoirGrade != null">
+                reservoir_grade,
+            </if>
+            <if test="reservoirGradeName != null">
+                reservoir_grade_name,
+            </if>
+            <if test="floodLowLimitLevel != null">
+                flood_low_limit_level,
+            </if>
+            <if test="floodLowLimitCapacity != null">
+                flood_low_limit_capacity,
+            </if>
+            <if test="floodSeasonTypeCode != null">
+                flood_season_type_code,
+            </if>
+            <if test="floodSeasonTypeName != null">
+                flood_season_type_name,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="stationCode != null">
+                #{stationCode,jdbcType=VARCHAR},
+            </if>
+            <if test="monitorDateTime != null">
+                #{monitorDateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="stationName != null">
+                #{stationName,jdbcType=VARCHAR},
+            </if>
+            <if test="orginMonitorDateTime != null">
+                #{orginMonitorDateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="provRegionCode != null">
+                #{provRegionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="provRegionName != null">
+                #{provRegionName,jdbcType=VARCHAR},
+            </if>
+            <if test="cityRegionCode != null">
+                #{cityRegionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cityRegionName != null">
+                #{cityRegionName,jdbcType=VARCHAR},
+            </if>
+            <if test="districtRegionCode != null">
+                #{districtRegionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="districtRegionName != null">
+                #{districtRegionName,jdbcType=VARCHAR},
+            </if>
+            <if test="lng != null">
+                #{lng,jdbcType=DECIMAL},
+            </if>
+            <if test="lat != null">
+                #{lat,jdbcType=DECIMAL},
+            </if>
+            <if test="stationLoc != null">
+                #{stationLoc,jdbcType=VARCHAR},
+            </if>
+            <if test="watershedCode != null">
+                #{watershedCode,jdbcType=VARCHAR},
+            </if>
+            <if test="watershedName != null">
+                #{watershedName,jdbcType=VARCHAR},
+            </if>
+            <if test="riversysCode != null">
+                #{riversysCode,jdbcType=VARCHAR},
+            </if>
+            <if test="riversysName != null">
+                #{riversysName,jdbcType=VARCHAR},
+            </if>
+            <if test="riverCode != null">
+                #{riverCode,jdbcType=VARCHAR},
+            </if>
+            <if test="riverName != null">
+                #{riverName,jdbcType=VARCHAR},
+            </if>
+            <if test="monitorDate != null">
+                #{monitorDate,jdbcType=CHAR},
+            </if>
+            <if test="monitorHour != null">
+                #{monitorHour,jdbcType=TINYINT},
+            </if>
+            <if test="inFlow != null">
+                #{inFlow,jdbcType=DECIMAL},
+            </if>
+            <if test="outFlow != null">
+                #{outFlow,jdbcType=DECIMAL},
+            </if>
+            <if test="waterLevel != null">
+                #{waterLevel,jdbcType=DECIMAL},
+            </if>
+            <if test="monitorCapacity != null">
+                #{monitorCapacity,jdbcType=DECIMAL},
+            </if>
+            <if test="waterLevelVariety != null">
+                #{waterLevelVariety,jdbcType=TINYINT},
+            </if>
+            <if test="waterLevelVarietyName != null">
+                #{waterLevelVarietyName,jdbcType=VARCHAR},
+            </if>
+            <if test="latestMonitorDateTime != null">
+                #{latestMonitorDateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="latestInFlow != null">
+                #{latestInFlow,jdbcType=DECIMAL},
+            </if>
+            <if test="latestOutFlow != null">
+                #{latestOutFlow,jdbcType=DECIMAL},
+            </if>
+            <if test="latestWaterLevel != null">
+                #{latestWaterLevel,jdbcType=DECIMAL},
+            </if>
+            <if test="latestMonitorCapacity != null">
+                #{latestMonitorCapacity,jdbcType=DECIMAL},
+            </if>
+            <if test="totalCapacity != null">
+                #{totalCapacity,jdbcType=DECIMAL},
+            </if>
+            <if test="nomalWaterLevel != null">
+                #{nomalWaterLevel,jdbcType=DECIMAL},
+            </if>
+            <if test="reservoirGrade != null">
+                #{reservoirGrade,jdbcType=VARCHAR},
+            </if>
+            <if test="reservoirGradeName != null">
+                #{reservoirGradeName,jdbcType=VARCHAR},
+            </if>
+            <if test="floodLowLimitLevel != null">
+                #{floodLowLimitLevel,jdbcType=DECIMAL},
+            </if>
+            <if test="floodLowLimitCapacity != null">
+                #{floodLowLimitCapacity,jdbcType=DECIMAL},
+            </if>
+            <if test="floodSeasonTypeCode != null">
+                #{floodSeasonTypeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="floodSeasonTypeName != null">
+                #{floodSeasonTypeName,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yunli.ecology.search.schema.entity.YlIotReservoirWaterHourly">
+        update yl_iot_reservoirwater_hourly
+        <set>
+            <if test="stationName != null">
+                station_name = #{stationName,jdbcType=VARCHAR},
+            </if>
+            <if test="orginMonitorDateTime != null">
+                orgin_monitor_date_time = #{orginMonitorDateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="provRegionCode != null">
+                prov_region_code = #{provRegionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="provRegionName != null">
+                prov_region_name = #{provRegionName,jdbcType=VARCHAR},
+            </if>
+            <if test="cityRegionCode != null">
+                city_region_code = #{cityRegionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cityRegionName != null">
+                city_region_name = #{cityRegionName,jdbcType=VARCHAR},
+            </if>
+            <if test="districtRegionCode != null">
+                district_region_code = #{districtRegionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="districtRegionName != null">
+                district_region_name = #{districtRegionName,jdbcType=VARCHAR},
+            </if>
+            <if test="lng != null">
+                lng = #{lng,jdbcType=DECIMAL},
+            </if>
+            <if test="lat != null">
+                lat = #{lat,jdbcType=DECIMAL},
+            </if>
+            <if test="stationLoc != null">
+                station_loc = #{stationLoc,jdbcType=VARCHAR},
+            </if>
+            <if test="watershedCode != null">
+                watershed_code = #{watershedCode,jdbcType=VARCHAR},
+            </if>
+            <if test="watershedName != null">
+                watershed_name = #{watershedName,jdbcType=VARCHAR},
+            </if>
+            <if test="riversysCode != null">
+                riversys_code = #{riversysCode,jdbcType=VARCHAR},
+            </if>
+            <if test="riversysName != null">
+                riversys_name = #{riversysName,jdbcType=VARCHAR},
+            </if>
+            <if test="riverCode != null">
+                river_code = #{riverCode,jdbcType=VARCHAR},
+            </if>
+            <if test="riverName != null">
+                river_name = #{riverName,jdbcType=VARCHAR},
+            </if>
+            <if test="monitorDate != null">
+                monitor_date = #{monitorDate,jdbcType=CHAR},
+            </if>
+            <if test="monitorHour != null">
+                monitor_hour = #{monitorHour,jdbcType=TINYINT},
+            </if>
+            <if test="inFlow != null">
+                in_flow = #{inFlow,jdbcType=DECIMAL},
+            </if>
+            <if test="outFlow != null">
+                out_flow = #{outFlow,jdbcType=DECIMAL},
+            </if>
+            <if test="waterLevel != null">
+                water_level = #{waterLevel,jdbcType=DECIMAL},
+            </if>
+            <if test="monitorCapacity != null">
+                monitor_capacity = #{monitorCapacity,jdbcType=DECIMAL},
+            </if>
+            <if test="waterLevelVariety != null">
+                water_level_variety = #{waterLevelVariety,jdbcType=TINYINT},
+            </if>
+            <if test="waterLevelVarietyName != null">
+                water_level_variety_name = #{waterLevelVarietyName,jdbcType=VARCHAR},
+            </if>
+            <if test="latestMonitorDateTime != null">
+                latest_monitor_date_time = #{latestMonitorDateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="latestInFlow != null">
+                latest_in_flow = #{latestInFlow,jdbcType=DECIMAL},
+            </if>
+            <if test="latestOutFlow != null">
+                latest_out_flow = #{latestOutFlow,jdbcType=DECIMAL},
+            </if>
+            <if test="latestWaterLevel != null">
+                latest_water_level = #{latestWaterLevel,jdbcType=DECIMAL},
+            </if>
+            <if test="latestMonitorCapacity != null">
+                latest_monitor_capacity = #{latestMonitorCapacity,jdbcType=DECIMAL},
+            </if>
+            <if test="totalCapacity != null">
+                total_capacity = #{totalCapacity,jdbcType=DECIMAL},
+            </if>
+            <if test="nomalWaterLevel != null">
+                nomal_water_level = #{nomalWaterLevel,jdbcType=DECIMAL},
+            </if>
+            <if test="reservoirGrade != null">
+                reservoir_grade = #{reservoirGrade,jdbcType=VARCHAR},
+            </if>
+            <if test="reservoirGradeName != null">
+                reservoir_grade_name = #{reservoirGradeName,jdbcType=VARCHAR},
+            </if>
+            <if test="floodLowLimitLevel != null">
+                flood_low_limit_level = #{floodLowLimitLevel,jdbcType=DECIMAL},
+            </if>
+            <if test="floodLowLimitCapacity != null">
+                flood_low_limit_capacity = #{floodLowLimitCapacity,jdbcType=DECIMAL},
+            </if>
+            <if test="floodSeasonTypeCode != null">
+                flood_season_type_code = #{floodSeasonTypeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="floodSeasonTypeName != null">
+                flood_season_type_name = #{floodSeasonTypeName,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where station_code = #{stationCode,jdbcType=VARCHAR}
+        and monitor_date_time = #{monitorDateTime,jdbcType=TIMESTAMP}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yunli.ecology.search.schema.entity.YlIotReservoirWaterHourly">
+        update yl_iot_reservoirwater_hourly
+        set station_name             = #{stationName,jdbcType=VARCHAR},
+            orgin_monitor_date_time  = #{orginMonitorDateTime,jdbcType=TIMESTAMP},
+            prov_region_code         = #{provRegionCode,jdbcType=VARCHAR},
+            prov_region_name         = #{provRegionName,jdbcType=VARCHAR},
+            city_region_code         = #{cityRegionCode,jdbcType=VARCHAR},
+            city_region_name         = #{cityRegionName,jdbcType=VARCHAR},
+            district_region_code     = #{districtRegionCode,jdbcType=VARCHAR},
+            district_region_name     = #{districtRegionName,jdbcType=VARCHAR},
+            lng                      = #{lng,jdbcType=DECIMAL},
+            lat                      = #{lat,jdbcType=DECIMAL},
+            station_loc              = #{stationLoc,jdbcType=VARCHAR},
+            watershed_code           = #{watershedCode,jdbcType=VARCHAR},
+            watershed_name           = #{watershedName,jdbcType=VARCHAR},
+            riversys_code            = #{riversysCode,jdbcType=VARCHAR},
+            riversys_name            = #{riversysName,jdbcType=VARCHAR},
+            river_code               = #{riverCode,jdbcType=VARCHAR},
+            river_name               = #{riverName,jdbcType=VARCHAR},
+            monitor_date             = #{monitorDate,jdbcType=CHAR},
+            monitor_hour             = #{monitorHour,jdbcType=TINYINT},
+            in_flow                  = #{inFlow,jdbcType=DECIMAL},
+            out_flow                 = #{outFlow,jdbcType=DECIMAL},
+            water_level              = #{waterLevel,jdbcType=DECIMAL},
+            monitor_capacity         = #{monitorCapacity,jdbcType=DECIMAL},
+            water_level_variety      = #{waterLevelVariety,jdbcType=TINYINT},
+            water_level_variety_name = #{waterLevelVarietyName,jdbcType=VARCHAR},
+            latest_monitor_date_time = #{latestMonitorDateTime,jdbcType=TIMESTAMP},
+            latest_in_flow           = #{latestInFlow,jdbcType=DECIMAL},
+            latest_out_flow          = #{latestOutFlow,jdbcType=DECIMAL},
+            latest_water_level       = #{latestWaterLevel,jdbcType=DECIMAL},
+            latest_monitor_capacity  = #{latestMonitorCapacity,jdbcType=DECIMAL},
+            total_capacity           = #{totalCapacity,jdbcType=DECIMAL},
+            nomal_water_level        = #{nomalWaterLevel,jdbcType=DECIMAL},
+            reservoir_grade          = #{reservoirGrade,jdbcType=VARCHAR},
+            reservoir_grade_name     = #{reservoirGradeName,jdbcType=VARCHAR},
+            flood_low_limit_level    = #{floodLowLimitLevel,jdbcType=DECIMAL},
+            flood_low_limit_capacity = #{floodLowLimitCapacity,jdbcType=DECIMAL},
+            flood_season_type_code   = #{floodSeasonTypeCode,jdbcType=VARCHAR},
+            flood_season_type_name   = #{floodSeasonTypeName,jdbcType=VARCHAR},
+            remark                   = #{remark,jdbcType=VARCHAR},
+            create_time              = #{createTime,jdbcType=TIMESTAMP},
+            update_time              = #{updateTime,jdbcType=TIMESTAMP}
+        where station_code = #{stationCode,jdbcType=VARCHAR}
+          and monitor_date_time = #{monitorDateTime,jdbcType=TIMESTAMP}
+    </update>
+</mapper>

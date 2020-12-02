@@ -1,0 +1,19 @@
+# 请参考 https://help.aliyun.com/document_detail/59293.html 了解更多关于release文件的编写方式
+
+# 构建源码语言类型
+code.language=oracle-jdk1.8
+
+# 构建
+build.command= mvn -U clean package -Dmaven.test.skip=true -P$PACKAGE_LABEL
+
+# 构建打包使用的打包文件
+build.output=target/ecology-fts.jar
+
+# Dockerfile文件 必须在工程跟目录
+docker.file=Dockerfile
+
+# Docker镜像构建之后push的仓库地址
+docker.repo=registry.cn-zhangjiakou.aliyuncs.com/yunli/ecology-fts
+
+# Docker 镜像tag版本
+docker.tag=${ENV_IMG_TAG}

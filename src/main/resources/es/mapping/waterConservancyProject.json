@@ -1,0 +1,49 @@
+{
+  "properties": {
+    "id": {
+      "type": "keyword"
+    },
+    "tableId": {
+      "type": "keyword"
+    },
+    "layerId": {
+      "type": "keyword"
+    },
+    "name": {
+      "type": "text",
+      "analyzer": "ik_max_word",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        },
+        "pinyin": {
+          "type": "text",
+          "analyzer": "pinyin"
+        },
+        "suggest": {
+          "type": "completion",
+          "analyzer": "ik_max_word"
+        },
+        "suggest_pinyin": {
+          "type": "completion",
+          "analyzer": "pinyin"
+        }
+      }
+    },
+    "longitude": {
+      "type": "double"
+    },
+    "latitude": {
+      "type": "double"
+    },
+    "attribute": {
+      "type": "keyword"
+    },
+    "dataType": {
+      "type": "keyword"
+    },
+    "dataTypeDesc": {
+      "type": "keyword"
+    }
+  }
+}
